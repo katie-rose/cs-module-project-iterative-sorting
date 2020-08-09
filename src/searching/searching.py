@@ -1,28 +1,21 @@
-import math
-
 def linear_search(arr, target):
-    # Your code here
-
-    for i in range(len(arr)):
+    for i in range(0, len(arr)):
         if arr[i] == target:
             return i
-        
-        return -1   # not found
+    return -1 
 
 
 # Write an iterative implementation of Binary Search
 def binary_search(arr, target):
-
-    # Your code here
-    low = 0
-    high = len(arr) - 1
-    while low <= high:
-        middle = math.floor(low + high / 2)
-        if arr[middle] > target:
-            high = middle - 1
-        elif arr[middle] < target:
-            low = middle + 1
+    start = 0
+    stop = len(arr) - 1
+    while start <= stop:
+        midpoint = start + (stop - start) // 2
+        if arr[midpoint] == target:
+            return midpoint
+        elif target < arr[midpoint]:
+            stop = midpoint - 1
         else:
-            return middle
+            start = midpoint + 1
 
-    return -1  # not found
+    return -1 
